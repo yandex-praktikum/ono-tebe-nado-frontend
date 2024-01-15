@@ -14,6 +14,11 @@
     margin: 0;
   }
 
+  &__items {
+    @include mixins.flex(column);
+    gap: 2rem;
+  }
+
   &__item {
     border: none;
     border-radius: 0.8rem;

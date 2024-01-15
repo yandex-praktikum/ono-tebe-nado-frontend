@@ -1,11 +1,11 @@
-type ApiListResponse<Type> = {
+export type ApiListResponse<Type> = {
     total: number,
     items: Type[]
 };
 
-type ApiPostMethods = 'POST' | 'PUT' | 'DELETE';
+export type ApiPostMethods = 'POST' | 'PUT' | 'DELETE';
 
-class Api {
+export class Api {
     readonly baseUrl: string;
     protected options: RequestInit;
 
@@ -35,6 +35,7 @@ class Api {
     post(uri: string, data: object, method: ApiPostMethods = 'POST') {
         return fetch(this.baseUrl + uri, {
             ...this.options,
+            method,
             body: JSON.stringify(data)
         }).then(this.handleResponse);
     }

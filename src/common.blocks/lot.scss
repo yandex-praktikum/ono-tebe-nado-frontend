@@ -12,6 +12,11 @@
   position: relative;
   overflow: hidden;
 
+  &__status {
+    @include mixins.flex(column);
+    gap: 3rem;
+  }
+
   &__content {
     @include mixins.flex(column);
     gap: 0.5rem;
@@ -41,7 +46,7 @@
     margin: 0.75rem 0;
   }
 
-  &__status {
+  &__auction {
     @include mixins.flex(column);
     align-items: center;
 

@@ -52,5 +52,9 @@
     &_closed {
       color: $statusClosed;
     }
+
+    &::before {
+      content: '• ';
+    }
   }
 }

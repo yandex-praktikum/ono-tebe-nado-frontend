@@ -36,8 +36,8 @@ const config = {
     // Add your plugins here
     // Learn more about plugins from https://webpack.js.org/configuration/plugins/
     new DefinePlugin({
-      'DEVELOPMENT': !isProduction,
-      'API_ORIGIN': JSON.stringify(process.env.API_ORIGIN ?? '')
+      'process.env.DEVELOPMENT': !isProduction,
+      'process.env.API_ORIGIN': JSON.stringify(process.env.API_ORIGIN ?? '')
     })
   ],
   module: {

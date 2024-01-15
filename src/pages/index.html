@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#000000"/>
     <link rel="icon" href="/favicon.ico"/>
-    <link rel="manifest" href="/manifest.json"/>
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -28,7 +28,7 @@
                 <a class="header__menu-item" href="#">Об аукционе</a>
             </nav>
             <button class="header__basket">
-                <span class="header__basket-counter">0</span>
+                <span class="header__basket-counter" data-element="basket" data-component="basket">0</span>
             </button>
         </div>
     </header>
@@ -42,45 +42,7 @@
 
         <section class="catalog">
             <h2 class="catalog__title">Лоты</h2>
-            <article class="catalog_item card">
-                <img class="card__image" src="<%=require('../images/lot1.jpg')%>" alt=""/>
-                <div class="card__content">
-                    <h1 class="card__title">Фильм режиссёра, который бросил киношколу</h1>
-                    <p class="card__description">Не просто бросил, а ушёл с первой лекции. Какой была бы ваша ставка,
-                        если бы вы не знали, что режиссёр — Пол Томас Андерсон?</p>
-                </div>
-                <div class="card__foot">
-                    <button class="card__action button">Сделать ставку</button>
-                    <span class="card__status card__status_active">• Открыто до 2 апреля 12:00</span>
-                </div>
-            </article>
-            <article class="catalog_item card">
-                <img class="card__image" src="<%=require('../images/lot2.jpg')%>" alt=""/>
-                <div class="card__content">
-                    <h1 class="card__title">Книга, где описан один скучный день из жизни рекламного агента</h1>
-                    <p class="card__description">Объёмом почти в тысячу страниц. Иногда без знаков препинания и с
-                        переходами на древнеанглийский. В ней одновременно рассказывается о 16 июня 1904 года и об
-                        истории литературы, начиная с античных времён. И это всё накладывается на эпическую поэму
-                        Гомера. Сколько бы вы поставили на «Улисса» Джеймса Джойса?</p>
-                </div>
-                <div class="card__foot">
-                    <button class="card__action button">Сделать ставку</button>
-                    <span class="card__status">• Откроется 3 мая в 14:00</span>
-                </div>
-            </article>
-            <article class="catalog_item card">
-                <img class="card__image" src="<%=require('../images/lot3.jpg')%>" alt=""/>
-                <div class="card__content">
-                    <h1 class="card__title">Картина, которую повторит даже 5-летний сын маминой подруги</h1>
-                    <p class="card__description">Ну действительно, там линия, тут кружочек, а здесь и вовсе что-то
-                        похожее на инфузорию-туфельку. Никаких полей, лесов, котиков… Сколько бы вы на такое поставили,
-                        если бы не знали, что это — одна из революционных работ Кандинского?</p>
-                </div>
-                <div class="card__foot">
-                    <button class="card__action button">Сделать ставку</button>
-                    <span class="card__status card__status_closed">• Закрыто 31 мая в 12:00</span>
-                </div>
-            </article>
+            <div  class="catalog__items" data-element="catalog" data-component="catalog"></div>
         </section>
 
         <section class="about">
@@ -109,6 +71,15 @@
             </div>
         </div>
     </footer>
+</div>
+
+<div class="modal" id="modal-container">
+    <div class="modal__container">
+        <button class="modal__close" aria-label="закрыть"></button>
+        <div class="modal__content">
+
+        </div>
+    </div>
 </div>
 
 <div class="modal">
@@ -208,30 +179,32 @@
                 <button disabled class="button button_outline tabs__item_active">Закрытые</button>
             </nav>
             <form class="basket">
-                <div class="basket__item bid">
-                    <img class="bid__image" src="<%=require('../images/lot1.jpg')%>" alt="" />
-                    <div class="bid__description">
-                        <h3 class="bid__title">Фильм режиссёра, который бросил киношколу</h3>
-                        <span class="bid__amount">10000</span>
-                        <span class="bid__status">Моя ставка</span>
+                <div class="basket__list">
+                    <div class="basket__item bid">
+                        <img class="bid__image" src="<%=require('../images/lot1.jpg')%>" alt="" />
+                        <div class="bid__description">
+                            <h3 class="bid__title">Фильм режиссёра, который бросил киношколу</h3>
+                            <span class="bid__amount">10000</span>
+                            <span class="bid__status">Моя ставка</span>
+                        </div>
+                        <label class="bid__selector">
+                            <input type="checkbox" />
+                        </label>
                     </div>
-                    <label class="bid__selector">
-                        <input type="checkbox" />
-                    </label>
-                </div>
-                <div class="basket__item bid">
-                    <img class="bid__image" src="<%=require('../images/lot2.jpg')%>" alt="" />
-                    <div class="bid__description">
-                        <h3 class="bid__title">Книга, где описан один скучный день из жизни рекламного агента</h3>
-                        <span class="bid__amount">5000</span>
+                    <div class="basket__item bid">
+                        <img class="bid__image" src="<%=require('../images/lot2.jpg')%>" alt="" />
+                        <div class="bid__description">
+                            <h3 class="bid__title">Книга, где описан один скучный день из жизни рекламного агента</h3>
+                            <span class="bid__amount">5000</span>
+                        </div>
+                        <label class="bid__selector">
+                            <input type="checkbox" />
+                        </label>
                     </div>
-                    <label class="bid__selector">
-                        <input type="checkbox" />
-                    </label>
                 </div>
                 <div class="basket__actions">
                     <span class="basket__total">15000</span>
-                    <button class="button">Оформить</button>
+                    <button class="button basket__action">Оформить</button>
                 </div>
             </form>
         </div>
@@ -288,6 +261,124 @@
         </div>
     </div>
 </div>
+
+    <template id="success">
+        <div class="state">
+            <img class="state__image" src="<%=require('../images/ready.svg')%>" />
+            <h2 class="state__title">Покупка скоро будет у вас</h2>
+            <p class="state__subtitle">Оформленные лоты удалены из корзины</p>
+            <button type="button" class="button state__action">На главную</button>
+        </div>
+    </template>
+
+    <template id="order">
+        <form class="form" name="order">
+            <label class="form__label">
+                <input name="email" type="email" class="form__input" placeholder="Email" />
+            </label>
+            <label class="form__label">
+                <input name="phone" type="text" class="form__input" placeholder="+7 (" />
+            </label>
+            <div class="form__footer">
+                <button type="submit" class="button">Оформить</button>
+                <span class="form__errors">Заполните поля</span>
+            </div>
+        </form>
+    </template>
+
+    <template id="tabs">
+        <nav class="tabs">
+            <button name="active" class="button button_outline">Активные</button>
+            <button name="closed" disabled class="button button_outline">Закрытые</button>
+        </nav>
+    </template>
+
+    <template id="basket">
+        <div class="basket">
+            <div class="basket__list"></div>
+            <div class="basket__actions">
+                <span class="basket__total"></span>
+                <button class="button basket__action">Оформить</button>
+            </div>
+        </div>
+    </template>
+
+    <template id="bids">
+        <div class="basket">
+            <div class="basket__list"></div>
+        </div>
+    </template>
+
+    <template id="auction">
+        <div class="lot__status">
+            <div class="lot__auction">
+                <span class="lot__auction-timer"></span>
+                <span class="lot__auction-text"></span>
+            </div>
+            <form class="form lot__bid">
+                <label class="form__label form__label_grouped lot__bid-amount">
+                    <input class="form__input" type="text" placeholder="Ваша ставка" />
+                </label>
+                <button class="button">Поставить</button>
+            </form>
+            <div class="lot__history">
+                <span class="lot__history-caption">Последние ставки:</span>
+                <ul class="lot__history-bids">
+                </ul>
+            </div>
+        </div>
+    </template>
+
+    <template id="bid">
+        <div class="basket__item bid">
+            <img class="bid__image" src="<%=require('../images/lot1.jpg')%>" alt="" />
+            <div class="bid__description">
+                <h3 class="bid__title"></h3>
+                <span class="bid__amount"></span>
+                <span class="bid__status">Моя ставка</span>
+            </div>
+            <button class="bid__open"></button>
+        </div>
+    </template>
+
+    <template id="sold">
+        <div class="basket__item bid">
+            <img class="bid__image" src="<%=require('../images/lot1.jpg')%>" alt="" />
+            <div class="bid__description">
+                <h3 class="bid__title"></h3>
+                <span class="bid__amount"></span>
+                <span class="bid__status">Моя ставка</span>
+            </div>
+            <label class="bid__selector">
+                <input type="checkbox" class="bid__selector-input" />
+            </label>
+        </div>
+    </template>
+
+    <template id="preview">
+        <article class="lot">
+            <img class="lot__image" src="<%=require('../images/lot1.jpg')%>" alt=""/>
+            <div class="lot__status"></div>
+            <div class="lot__content">
+                <h1 class="lot__title"></h1>
+                <p class="lot__description"></p>
+            </div>
+        </article>
+    </template>
+
+    <template id="card">
+        <article class="catalog_item card">
+            <img class="card__image" src="<%=require('../images/lot1.jpg')%>" alt=""/>
+            <div class="card__content">
+                <h1 class="card__title"></h1>
+                <p class="card__description"></p>
+            </div>
+            <div class="card__foot">
+                <button class="card__action button">Сделать ставку</button>
+                <span class="card__status"></span>
+            </div>
+        </article>
+    </template>
 
 </body>
 </html>

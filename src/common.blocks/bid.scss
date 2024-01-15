@@ -29,6 +29,7 @@
     @include mixins.flex(row);
     grid-area: amount;
     font-weight: 500;
+    text-wrap: nowrap;
     &::after {
         content: " ₽";
     }

@@ -5,6 +5,11 @@
   @include mixins.flex(column);
   gap: 2rem;
 
+  &__list {
+    @include mixins.flex(column);
+    gap: 2rem;
+  }
+
   &__item {
 
   }
